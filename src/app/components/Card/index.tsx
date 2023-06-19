@@ -5,11 +5,12 @@ interface CardProps {
   icon: React.ReactElement;
   title: string;
   description: string;
+  onClick?: () => void;
 }
 
-const Card = ({ title, description, icon }: CardProps) => {
+const Card = ({ title, description, icon, onClick }: CardProps) => {
   return (
-    <Container>
+    <Container onClick={onClick}>
       <MuiCard sx={{ mb: 2, width: 250 }} elevation={2}>
         <CardContent>
           <Icon>{icon}</Icon>
