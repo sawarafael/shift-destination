@@ -1,6 +1,6 @@
 "use client";
+import { ThemeProvider } from "../base/styles/ThemeProvider";
 import Routes from "./routes";
-import { ThemeProvider } from "./styles/ThemeProvider";
 
 const App = () => {
   return (

@@ -1,11 +1,19 @@
 import { BrowserRouter, Route, Routes as Switch } from "react-router-dom";
 import { Home } from "../pages";
+import ClientRoutes from "./client.routes";
 
 const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route key={1} path="/" element={<Home />} />
+        <Route path="/" element={<Home />} />
+        {ClientRoutes.map((clientRoute, index) => (
+          <Route
+            key={index}
+            path={clientRoute.path}
+            element={<clientRoute.component />}
+          />
+        ))}
       </Switch>
     </BrowserRouter>
   );
