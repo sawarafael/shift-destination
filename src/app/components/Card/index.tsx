@@ -1,19 +1,23 @@
 import { CardContent, Card as MuiCard } from "@mui/material";
-import { Title } from "./styles";
+import { Container, Description, Icon, Title } from "./styles";
 
 interface CardProps {
-  icon: string;
+  icon: React.ReactElement;
   title: string;
   description: string;
 }
 
-const Card = ({ title }: CardProps) => {
+const Card = ({ title, description, icon }: CardProps) => {
   return (
-    <MuiCard>
-      <CardContent>
-        <Title></Title>
-      </CardContent>
-    </MuiCard>
+    <Container>
+      <MuiCard sx={{ mb: 2, width: 250 }} elevation={2}>
+        <CardContent>
+          <Icon>{icon}</Icon>
+          <Title>{title}</Title>
+          <Description>{description}</Description>
+        </CardContent>
+      </MuiCard>
+    </Container>
   );
 };
 

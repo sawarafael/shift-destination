@@ -1,6 +1,11 @@
 import { styled } from "styled-components";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  display: flex;
+
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+`;
 
 export const Title = styled.h3``;
 
