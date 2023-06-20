@@ -7,19 +7,12 @@ export interface TableColumnValue {
   label: string;
 }
 
-type TableColumns<T> = {
+export type TableColumns<T> = {
   field: string;
   name: string;
   flex?: number;
   value: (row: T) => string | number | ReactNode;
-  type?:
-    | "string"
-    | "number"
-    | "date"
-    | "dateTime"
-    | "boolean"
-    | "singleSelect"
-    | "actions";
+  type?: "string" | "number" | "date" | "dateTime" | "boolean";
 };
 
 interface IProps {
@@ -38,11 +31,6 @@ interface IProps {
     total: number | any;
   };
   checkboxes?: boolean;
-}
-
-interface IPaginationProps {
-  page: number;
-  limit: number;
 }
 
 const DataTable = ({

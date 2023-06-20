@@ -1,5 +1,7 @@
+import { Box, Skeleton } from "@mui/material";
 import DataTable from "app/components/DataTable";
 import useClientList from "app/hooks/clients/useClientList";
+import { listColumnsData } from "base/data/mock/client/listColumnsData";
 import { Container, Content, Header } from "./styles";
 
 const Clients = () => {
@@ -14,58 +16,22 @@ const Clients = () => {
         <h1>Clientes</h1>
       </Header>
       <Content>
+        {isLoading && (
+          <Box sx={{ width: "100%", height: "100%" }}>
+            <Skeleton />
+            <Skeleton animation="wave" />
+            <Skeleton animation={false} />
+          </Box>
+        )}
+        {isError && (
+          <p>
+            {status}: Infelizmente não foi possível resgatar os dados
+            necessários.
+          </p>
+        )}
         {isSuccess && (
           <DataTable
-            columns={[
-              {
-                field: "id",
-                name: "ID",
-                flex: 1,
-                value: ({ id }) => id,
-              },
-              {
-                field: "numeroDocumento",
-                name: "Nº. Documento",
-                flex: 1,
-                value: ({ numeroDocumento }) => numeroDocumento,
-              },
-              {
-                field: "tipoDocumento",
-                name: "Tipo do Documento",
-                flex: 1,
-                value: ({ tipoDocumento }) => tipoDocumento,
-              },
-              {
-                field: "nome",
-                name: "Nome",
-                flex: 1,
-                value: ({ name }) => name,
-              },
-              {
-                field: "logradouro",
-                name: "Logradouro",
-                flex: 1,
-                value: ({ logradouro }) => logradouro,
-              },
-              {
-                field: "bairro",
-                name: "Bairro",
-                flex: 1,
-                value: ({ bairro }) => bairro,
-              },
-              {
-                field: "cidade",
-                name: "Cidade",
-                flex: 1,
-                value: ({ cidade }) => cidade,
-              },
-              {
-                field: "uf",
-                name: "UF",
-                flex: 1,
-                value: ({ uf }) => uf,
-              },
-            ]}
+            columns={listColumnsData}
             data={data ? data : []}
             rowId={(row) => row.id}
           />
