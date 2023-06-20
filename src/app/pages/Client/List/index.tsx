@@ -1,19 +1,28 @@
 import { Box, Skeleton } from "@mui/material";
-import DataTable from "app/components/DataTable";
+import { Button, DataTable } from "app/components";
 import useClientList from "app/hooks/clients/useClientList";
 import { listColumnsData } from "base/data/mock/client/listColumnsData";
-import { Container, Content, Header } from "./styles";
+import { useNavigate } from "react-router-dom";
+import { Actions, Container, Content, Header } from "./styles";
 
 const Clients = () => {
-  const { data, isError, isLoading, isSuccess, error, refetch, status } =
-    useClientList();
+  const navigate = useNavigate();
 
-  console.log(data);
+  const { data, isError, isLoading, isSuccess, refetch, status } =
+    useClientList();
 
   return (
     <Container>
       <Header>
-        <h1>Clientes</h1>
+        <h1>Lista de Clientes</h1>
+        <Actions>
+          <Button onClick={() => refetch()} variant="contained">
+            Atualizar
+          </Button>
+          <Button onClick={() => navigate(-1)} variant="outlined">
+            Retornar
+          </Button>
+        </Actions>
       </Header>
       <Content>
         {isLoading && (
@@ -25,7 +34,7 @@ const Clients = () => {
         )}
         {isError && (
           <p>
-            {status}: Infelizmente não foi possível resgatar os dados
+            {status}: Infelizmente não foi possível recuperar os dados
             necessários.
           </p>
         )}

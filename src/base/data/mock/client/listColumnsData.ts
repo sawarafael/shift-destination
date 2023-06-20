@@ -21,7 +21,7 @@ export const listColumnsData = [
     field: "nome",
     name: "Nome",
     flex: 1,
-    value: ({ name }: any) => name,
+    value: ({ nome }: any) => nome,
   },
   {
     field: "logradouro",
