@@ -9,7 +9,3 @@ export interface IClient {
   cidade: string;
   uf: string;
 }
-
-export interface IClientResponse {
-  data: IClient[];
-}
